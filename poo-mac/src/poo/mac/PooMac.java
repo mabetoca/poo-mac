@@ -17,6 +17,19 @@ public class PooMac {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Hola Mundo");
+        
+        //Tenemos que generar antes los objetos de las clases anteriores
+        Usuario x=new Usuario();
+        x.altura=1.69f;
+        x.peso=60f;
+        
+        Imc algo=new Imc();
+        algo.u=x;
+        
+        //Calculamos el IMC a través de su objeto
+        System.out.println(algo.calcular());
+        
     }
+    
     
 }
