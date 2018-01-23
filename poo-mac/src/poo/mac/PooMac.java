@@ -20,8 +20,8 @@ public class PooMac {
         
         //Tenemos que generar antes los objetos de las clases anteriores
         Usuario x=new Usuario();
-        x.altura=1.69f;
-        x.peso=60f;
+        x.setAltura(1.69f);
+        x.setPeso(60);
         
         Imc algo=new Imc();
         algo.u=x;
