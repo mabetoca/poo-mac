@@ -12,7 +12,7 @@ package poliejemplo;
 public class Mascotas {
     public static void main(String[] args) {
         
-        ComportamientoAnimal animales[]=new [10];
+        Animal animales[]=new Animal[12];
         
         //Primero generamos a los gatos
         animales[0]=new Gato();
@@ -30,10 +30,16 @@ public class Mascotas {
         animales[8]=new Pollo();
         animales[9]=new Pollo();
         
-        //LA MAGIA DEL POLIMORFISMO
-        for(ComportamientoAnimal animal:animales){
+        //Generamos Ratones
+        animales[10]=new Raton();
+        animales[11]=new Raton();
         
-            System.out.println(animal.hacerRuido());
+        ServicioAnimales s=new ServicioAnimales();
+        
+        //LA MAGIA DEL POLIMORFISMO
+        for(Animal a:animales){
+        
+            s.servicioHacerRuido((ComportamientoAnimal)a);
         }
     }
     

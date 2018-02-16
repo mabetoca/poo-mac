@@ -7,11 +7,14 @@ package poliejemplo;
 
 /**
  *
- * @author MarioAlberto
+ * @author T-102
  */
-public class FlyNoWay implements FlyBehavior{
-     public void ﬂy() {    
-         System.out.println("I can't fly");
-            
-     } 
+public class Raton extends Animal implements ComportamientoAnimal{
+    
+    @Override
+    public void hacerRuido(){
+    
+        System.out.println("iii - iii - iii");
+    }
+    
 }

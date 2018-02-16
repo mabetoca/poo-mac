@@ -7,9 +7,14 @@ package poliejemplo;
 
 /**
  *
- * @author MarioAlberto
+ * @author T-102
  */
-public interface FlyBehavior {
-    public void ﬂy(); 
-
+public class ServicioAnimales {
+    
+    public void servicioHacerRuido(ComportamientoAnimal ca){
+    
+        ca.hacerRuido();
+    }
+            
+    
 }
