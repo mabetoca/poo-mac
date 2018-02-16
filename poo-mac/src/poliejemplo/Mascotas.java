@@ -5,6 +5,7 @@
  */
 package poliejemplo;
 
+import java.util.*;
 /**
  *
  * @author T-102
@@ -41,6 +42,28 @@ public class Mascotas {
         
             s.servicioHacerRuido((ComportamientoAnimal)a);
         }
+        
+        //VAMOS A GENERAR UN ARRAYLIST Y PONER ALLI ALGUNOS ANIMALES
+        ArrayList<Animal> animalitos=new ArrayList<>(); //ARREGLO GENÉRICO
+        
+        animalitos.add(new Pollo()); //CREACIÓN DE OBJETOS DE FORMA ANÓNIMA
+        
+        animalitos.add(new Raton());
+        
+        animalitos.add(new Perro());
+        
+        animalitos.add(new Gato());
+        
+        animalitos.add(new Perro());
+        
+        for(Animal a:animalitos){
+        
+            s.servicioHacerRuido((ComportamientoAnimal)a);
+        }
+        
+        animalitos.get(0).setEdad(1);
+            System.out.println(animalitos.get(0).getEdad());
+            
     }
     
 }
