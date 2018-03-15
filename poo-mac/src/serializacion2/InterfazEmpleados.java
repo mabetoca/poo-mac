@@ -5,6 +5,8 @@
  */
 package serializacion2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author T-102
@@ -204,9 +206,40 @@ public class InterfazEmpleados extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Empleado e1=new Empleado(" Alberto ", " Castro ", " Alvarez ", 20000F, " Sistemas ");
+        //Empleado e1=new Empleado(" Alberto ", " Castro ", " Alvarez ", 20000F, " Sistemas ");
+        Empleado e1=new Empleado();
+        
+        
+        e1.setNombre(jTextField1.getText());
+        e1.setPaterno(jTextField2.getText());
+        e1.setMaterno(jTextField3.getText());
+        e1.setSueldoBase((float)jComboBox1.getSelectedItem());
+        e1.setDepartamento((String)jComboBox2.getSelectedItem());
+        
+        ArrayList<Empleado> empleados=new ArrayList<>();
+        empleados.add(e1);
+        
+        /*
+        String nombre=jTextField1.getText();
+        String paterno=jTextField2.getText();
+        String materno=jTextField3.getText();
+        Float sueldoBase=(float)jComboBox1.getSelectedItem();
+        String departamento=(String)jComboBox2.getSelectedItem();
+        
+        Empleado e1=new Empleado();
+        e1.setNombre(nombre);
+        e1.setPaterno(paterno);
+        e1.setMaterno(materno);
+        e1.setSueldoBase(sueldoBase);
+        e1.setDepartamento(departamento);*/
+              
+       
+       
+        
+        
         
         System.out.println(e1);
+        
         /*
         System.out.println("Nombre = "+e1.getNombre());
         System.out.println("A. Paterno = "+e1.getPaterno());

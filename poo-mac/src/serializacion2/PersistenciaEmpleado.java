@@ -48,9 +48,9 @@ public class PersistenciaEmpleado {
         //Ponemos un mensajito
             System.out.println("Objeto Guardado con Éxito");
         
-        }catch(Exception e){
+        }catch(Exception ex){
                    
-            System.out.println(e.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
 
