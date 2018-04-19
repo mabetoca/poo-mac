@@ -14,9 +14,14 @@ import java.io.Serializable;
 public class Examen implements Serializable{
     
     private String nombre;
-    private Float calificacion;
+    private String calificacion;
 
-    public Examen(String nombre, Float calificacion) {
+    @Override
+    public String toString() {
+        return "Examen{" + "nombre=" + nombre + ", calificacion=" + calificacion + '}';
+    }
+
+    public Examen(String nombre, String calificacion) {
         this.nombre = nombre;
         this.calificacion = calificacion;
     }
@@ -32,13 +37,14 @@ public class Examen implements Serializable{
         this.nombre = nombre;
     }
 
-    public Float getCalificacion() {
+    public String getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(Float calificacion) {
+    public void setCalificacion(String calificacion) {
         this.calificacion = calificacion;
     }
 
+    
    
 }

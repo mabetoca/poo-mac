@@ -43,22 +43,31 @@ public class PersistenciaAlumno {
     }
 
     //Guardar
-    public void guardar(Alumno alumno){
+    public void guardar(Alumno e){
     
-        try{
+        File file=new File("Alumno.yo");
         
-            File file=new File("alumnos");
-            if(file.exists())alumnos=leerTodos();
-            FileOutputStream fos=new FileOutputStream(file);
-            ObjectOutputStream oos=new ObjectOutputStream(fos);
-            
-            //primero agregamos al arraylist
-            alumnos.add(alumno);
-            
-            //Guardamos todo arraylist al serializado
-            oos.writeObject(alumnos);
-        }catch(Exception e){
-            System.out.println("Este error ocurrio con guardado"+e.getMessage());
+        if(file.exists()){
+        
+            alumnos=leerTodos();
         }
-    }
-}
+        
+        //Despues lo abrimos para escribir sobre él
+        try{
+        FileOutputStream fos=new FileOutputStream(file); //Estas clases dentro de java.io.*
+        //Luego serializamos
+        ObjectOutputStream oos=new ObjectOutputStream(fos);
+        
+        //Guardamos nuestro usuario
+        alumnos.add(e);
+        oos.writeObject(alumnos);
+        
+        //Ponemos un mensajito
+            System.out.println("Alumno Guardado con Éxito");
+        
+        }catch(Exception ex){
+                   
+            System.out.println(ex.getMessage());
+        }
+
+}}

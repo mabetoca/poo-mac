@@ -6,6 +6,7 @@
 package etebien;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +14,16 @@ import javax.swing.JOptionPane;
  */
 public class VentanaAlumno extends javax.swing.JFrame {
 
+     DefaultTableModel md;
+    String data[][]={};
+    String cabeza[]={"No.Cuenta","Nombre","A.Paterno","A.Materno","Examen","Calificacion"};
     /**
      * Creates new form VentanaAlumno
      */
     public VentanaAlumno() {
         initComponents();
+         md=new DefaultTableModel(data, cabeza);
+        jTable1.setModel(md);
     }
 
     /**
@@ -42,7 +48,6 @@ public class VentanaAlumno extends javax.swing.JFrame {
         tCalificacion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -66,8 +71,6 @@ public class VentanaAlumno extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton2.setText("BuscarTodos");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,17 +121,10 @@ public class VentanaAlumno extends javax.swing.JFrame {
                                     .addComponent(tCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(103, 103, 103))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(120, Short.MAX_VALUE))))
+                        .addComponent(jButton1)))
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,15 +133,10 @@ public class VentanaAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jButton2)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -176,16 +167,21 @@ public class VentanaAlumno extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Examen examen=new Examen(tExamenNombre.getText(), 
-                Float.parseFloat(tCalificacion.getText()));
+                tCalificacion.getText());
         
-        Alumno alumno=new Alumno(Long.parseLong(tCuenta.getText()),tNombre.getText(),
+        Alumno alumno=new Alumno(tCuenta.getText(),tNombre.getText(),
                                 tPaterno.getText(),tMaterno.getText(),examen);
         
-        //finalmemte guarda,mos
+        //finalmemte guardamos
         
         PersistenciaAlumno p=new PersistenciaAlumno();
         p.guardar(alumno);
         JOptionPane.showMessageDialog(this,"Guardado con exito","confirmar",1);
+        
+        PersistenciaAlumno m=new PersistenciaAlumno();
+        m.leerTodos();
+        String datos[]={tCuenta.getText(),tNombre.getText(),tPaterno.getText(),tMaterno.getText(),tExamenNombre.getText(),tCalificacion.getText()};
+        md.addRow(datos);
         
         // Borrar 
         tExamenNombre.setText(null);
@@ -195,8 +191,7 @@ public class VentanaAlumno extends javax.swing.JFrame {
         tPaterno.setText(null);
         tMaterno.setText(null);
         
-        System.out.println(tNombre.getText());
-        System.out.println(tMaterno.getText());
+        System.out.println(p);
         
        
         
@@ -239,7 +234,6 @@ public class VentanaAlumno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,13 +13,18 @@ import java.io.Serializable;
  */
 public class Alumno implements Serializable{
     
-    private long cuenta;
+    private String cuenta;
     private String nombre;
     private String paterno;
     private String materno;
     private Examen examen;
 
-    public Alumno(long cuenta, String nombre, String paterno, String materno, Examen examen) {
+    @Override
+    public String toString() {
+        return "Alumno{" + "cuenta=" + cuenta + ", nombre=" + nombre + ", paterno=" + paterno + ", materno=" + materno + ", examen=" + examen + '}';
+    }
+
+    public Alumno(String cuenta, String nombre, String paterno, String materno, Examen examen) {
         this.cuenta = cuenta;
         this.nombre = nombre;
         this.paterno = paterno;
@@ -27,11 +32,14 @@ public class Alumno implements Serializable{
         this.examen = examen;
     }
 
-    public long getCuenta() {
+    public Alumno() {
+    }
+
+    public String getCuenta() {
         return cuenta;
     }
 
-    public void setCuenta(long cuenta) {
+    public void setCuenta(String cuenta) {
         this.cuenta = cuenta;
     }
 
@@ -66,5 +74,7 @@ public class Alumno implements Serializable{
     public void setExamen(Examen examen) {
         this.examen = examen;
     }
+
+    
     
 }
